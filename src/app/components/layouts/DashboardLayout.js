@@ -5,30 +5,25 @@ import {
     ThemeProvider,
     Typography
 } from '@mui/material';
-import {
-    red
-} from '@mui/material/colors';
 import { MFTKTheme } from '../theme/MFTKTheme';
-import {
-    Outlet
-} from 'react-router-dom';
 /**
  * DashboardLayout
  */
 export function DashboardLayout(props) {
     // Data -------------------------------------------------
-    const logoElement = props.logoElement;
-    const menuElement = props.menuElement;
-    const subMenuElement = props.subMenuElement;
+    const logoElement = props.logo;
+    const menuElement = props.menu;
+    const subMenuElement = props.subMenu;
     const menuWidth = (props.menuWidth) ? props.menuWidth : 300;
     const headerHeight = (props.headerHeight) ? props.headerHeight : 50;
+    const content = props.content;
     // ------------------------------------------------- Data
     // Process ----------------------------------------------
     // ---------------------------------------------- Process
     // Event ------------------------------------------------
     // ------------------------------------------------ Event
     // Rander -----------------------------------------------
-    const header = (
+    const headerZoneElement = (
         <ThemeProvider theme={MFTKTheme}>
             <AppBar
                 position="fixed"
@@ -71,7 +66,7 @@ export function DashboardLayout(props) {
         </ThemeProvider>
     );
 
-    const menu = (
+    const menuZoneElement = (
         <Drawer
             variant="permanent"
             sx={{
@@ -95,7 +90,7 @@ export function DashboardLayout(props) {
         </Drawer>
     );
 
-    const content = (
+    const contentZoneElement = (
         <Box
             sx={{
                 flex: 1,
@@ -103,7 +98,7 @@ export function DashboardLayout(props) {
                 mt: `${headerHeight}px`
             }}
         >
-            <Outlet />
+            {content}
         </Box>
     )
 
@@ -113,9 +108,9 @@ export function DashboardLayout(props) {
                 display: 'flex'
             }}
         >
-            {header}
-            {menu}
-            {content}
+            {headerZoneElement}
+            {menuZoneElement}
+            {contentZoneElement}
         </Box>
     );
     return element;

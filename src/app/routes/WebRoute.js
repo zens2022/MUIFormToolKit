@@ -1,4 +1,5 @@
 import {
+    Outlet,
     Route,
     Routes
 } from 'react-router-dom';
@@ -14,22 +15,18 @@ export function WebRoute() {
     // Event ------------------------------------------------
     // ------------------------------------------------ Event
     // Rander -----------------------------------------------
-    const element = (
+    const routerElement = (
         <Routes>
-            <Route path='/' element={<DashboardLayout />}>
-                <Route index element={<>content</>} />
-            </Route>
-            <Route path='/subSystem1' element={<DashboardLayout/>}>
-                <Route index element={<>subSystem1 content</>} />
-            </Route>
-            <Route path='/subSystem2' element={<DashboardLayout/>}>
-                <Route index element={<>subSystem2 content</>} />
-            </Route>
-            <Route path='/subSystem3' element={<DashboardLayout/>}>
-                <Route index element={<>subSystem3 content</>} />
-            </Route>
+            <Route path='/' element="Home" />
+            <Route path='/page2' element="Page2" />
         </Routes>
+    );
 
+    const element = (
+        <DashboardLayout
+            logo="MUI Form Tool Kit"
+            content={routerElement}
+        />
     );
     return element;
     // ----------------------------------------------- Rander
