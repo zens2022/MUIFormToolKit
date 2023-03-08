@@ -4,6 +4,7 @@ import {
     useLocation
 } from 'react-router-dom';
 import { DashboardLayout } from '../components/layouts/DashboardLayout';
+import { CardListPage } from '../pages/ComponentPages/CardListPage';
 import { Menu } from '../pages/Menu';
 
 /**
@@ -22,7 +23,7 @@ export function WebRoute() {
     const routerElement = (
         <Routes>
             <Route path='/' element="Home" />
-            <Route path='/CardList' element="CardList" />
+            <Route path='/CardList' element={<CardListPage/>} />
         </Routes>
     );
 
